@@ -1,0 +1,459 @@
+/* ==========================================
+   Math Adventure Kids - Game Styles
+   ========================================== */
+
+/* Game Container */
+.game-container {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 2rem auto;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Game Header */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #667eea;
+}
+
+.game-title {
+    font-size: 2rem;
+    color: #2C3E50;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.game-stats {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    font-weight: 500;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #FF6B6B;
+}
+
+/* Score Display */
+.score-display {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.score-label {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.score-number {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+}
+
+/* Question Display */
+.question-area {
+    background: #f7f9fc;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    border: 3px dashed #4ECDC4;
+}
+
+.question-text {
+    font-size: 1.8rem;
+    color: #2C3E50;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+/* Options */
+.options-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.option-btn {
+    padding: 1rem;
+    border: 3px solid #e0e0e0;
+    border-radius: 15px;
+    background: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.option-btn:hover:not(:disabled) {
+    border-color: #667eea;
+    background: #f0f4ff;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.option-btn.correct {
+    background: #95E1D3;
+    border-color: #2ECC71;
+    color: white;
+    animation: correctAnswer 0.6s ease;
+}
+
+.option-btn.incorrect {
+    background: #FF6B6B;
+    border-color: #E74C3C;
+    color: white;
+    animation: wrongAnswer 0.6s ease;
+}
+
+.option-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+@keyframes correctAnswer {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes wrongAnswer {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* Input Area */
+.input-area {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.answer-input {
+    padding: 1rem;
+    font-size: 1.2rem;
+    border: 3px solid #e0e0e0;
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.answer-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+}
+
+.submit-btn {
+    padding: 1rem 2rem;
+    background: #FF6B6B;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #FF5252;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+/* Feedback Messages */
+.feedback {
+    padding: 1.5rem;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 1rem 0;
+    display: none;
+    animation: fadeInDown 0.5s ease;
+}
+
+.feedback.show {
+    display: block;
+}
+
+.feedback.correct {
+    background: #D4EDDA;
+    color: #155724;
+    border: 2px solid #28A745;
+}
+
+.feedback.incorrect {
+    background: #F8D7DA;
+    color: #721C24;
+    border: 2px solid #F5C6CB;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Progress Bar in Games */
+.game-progress {
+    margin: 2rem 0;
+}
+
+.progress-label {
+    font-weight: 600;
+    color: #2C3E50;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.progress-bar-game {
+    width: 100%;
+    height: 15px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar-game-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    transition: width 0.5s ease;
+}
+
+/* Button Controls */
+.game-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.btn-next {
+    padding: 1rem 2rem;
+    background: #4ECDC4;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-next:hover {
+    background: #3DBBB3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(78, 205, 196, 0.4);
+}
+
+.btn-restart {
+    padding: 1rem 2rem;
+    background: #FFE66D;
+    color: #2C3E50;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-restart:hover {
+    background: #FFD93D;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 230, 109, 0.4);
+}
+
+.btn-back {
+    padding: 0.75rem 1.5rem;
+    background: #95E1D3;
+    color: #2C3E50;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+    background: #7FD8C0;
+    transform: translateY(-2px);
+}
+
+/* Result Screen */
+.result-screen {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    color: white;
+}
+
+.result-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.result-message {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+.final-score {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 2rem 0;
+}
+
+.stars-earned {
+    font-size: 3rem;
+    margin: 1.5rem 0;
+}
+
+/* Celebration Animation */
+.celebration {
+    animation: celebrate 1s ease;
+}
+
+@keyframes celebrate {
+    0% {
+        transform: scale(0.5) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1) rotate(360deg);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design for Games */
+@media (max-width: 768px) {
+    .game-container {
+        padding: 1.5rem;
+        margin: 1rem auto;
+    }
+
+    .game-title {
+        font-size: 1.5rem;
+    }
+
+    .game-stats {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .question-text {
+        font-size: 1.4rem;
+    }
+
+    .options-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    .option-btn {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+
+    .result-title {
+        font-size: 2rem;
+    }
+
+    .final-score {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-container {
+        padding: 1rem;
+    }
+
+    .game-title {
+        font-size: 1.3rem;
+    }
+
+    .stat-value {
+        font-size: 1.4rem;
+    }
+
+    .question-text {
+        font-size: 1.2rem;
+    }
+
+    .options-container {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .game-controls {
+        gap: 0.5rem;
+    }
+
+    .btn-next,
+    .btn-restart {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+}
